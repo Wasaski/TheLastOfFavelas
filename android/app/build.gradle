@@ -1,0 +1,19 @@
+plugins { id 'com.android.application' version '8.5.2' }
+android {
+ namespace 'com.thelastoffavelas.game'
+ compileSdk 34
+ defaultConfig {
+  applicationId 'com.thelastoffavelas.game'
+  minSdk 26
+  targetSdk 34
+  versionCode 1
+  versionName '0.1.0'
+  ndk { abiFilters 'arm64-v8a' }
+ }
+ buildTypes {
+  release { minifyEnabled false; signingConfig signingConfigs.debug }
+  debug {}
+ }
+ externalNativeBuild { cmake { path = file('src/main/jni/CMakeLists.txt'); cppFlags '-std=c++20'; arguments '-DANDROID_STL=c++_static' } }
+}
+dependencies { implementation 'androidx.appcompat:appcompat:1.7.0' }
