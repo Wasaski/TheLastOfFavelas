@@ -33,10 +33,10 @@ int main(int argc, char** argv){
    if(e.type==SDL_EVENT_KEY_DOWN){ if(e.key.key==SDLK_ESCAPE) run=false;
     if(e.key.key==SDLK_W) in.moveZ=1; if(e.key.key==SDLK_S) in.moveZ=-1;
     if(e.key.key==SDLK_A) in.moveX=-1; if(e.key.key==SDLK_D) in.moveX=1;
-    if(e.key.key==SDLK_SHIFT) in.sprint=true; if(e.key.key==SDLK_C) in.crouch=true; }
+    if(e.key.key==SDLK_LSHIFT) in.sprint=true; if(e.key.key==SDLK_C) in.crouch=true; }
    if(e.type==SDL_EVENT_KEY_UP){ if(e.key.key==SDLK_W||e.key.key==SDLK_S) in.moveZ=0;
     if(e.key.key==SDLK_A||e.key.key==SDLK_D) in.moveX=0;
-    if(e.key.key==SDLK_SHIFT) in.sprint=false; if(e.key.key==SDLK_C) in.crouch=false; }
+    if(e.key.key==SDLK_LSHIFT) in.sprint=false; if(e.key.key==SDLK_C) in.crouch=false; }
    if(e.type==SDL_EVENT_MOUSE_MOTION) pc.look(e.motion.xrel,e.motion.yrel,0.0025f);
    if(e.type==SDL_EVENT_WINDOW_RESIZED) SDL_GetWindowSize(win,&w,&h);
   }
