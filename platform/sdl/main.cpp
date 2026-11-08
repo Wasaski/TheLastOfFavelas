@@ -16,7 +16,7 @@ static uint16_t kIdx[] = { 0,1,2, 0,2,3, 4,5,6, 4,6,7 };
 
 int main(int argc, char** argv){
  if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_EVENTS)!=0){ std::fprintf(stderr,"SDL init: %s\n",SDL_GetError()); return 1; }
- SDL_Window* win = SDL_CreateWindow("THE LAST OF FAVELAS", 960, 540, SDL_WINDOW_RESIZABLE);
+ SDL_Window* win = SDL_CreateWindow("THE LAST OF FAVELAS", 960, 540, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
  if(!win){ std::fprintf(stderr,"window: %s\n",SDL_GetError()); return 1; }
  SDL_GLContext ctx = SDL_GL_CreateContext(win);
  if(!ctx){ std::fprintf(stderr,"GL: %s\n",SDL_GetError()); return 1; }
