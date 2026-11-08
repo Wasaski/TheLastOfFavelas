@@ -4,3 +4,5 @@ local.properties
 *.apk
 *.aab
 t.sav
+android/gradlew.new
+android/gradlew.tmp
