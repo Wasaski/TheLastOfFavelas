@@ -1,9 +1,9 @@
 #include <SDL3/SDL.h>
 #include <GLES2/gl2.h>
-#include "engine/renderer/PS1Renderer.h"
-#include "engine/world/Level.h"
-#include "engine/player/FirstPersonController.h"
-#include "engine/core/Mat4.h"
+#include "renderer/PS1Renderer.h"
+#include "world/Level.h"
+#include "player/FirstPersonController.h"
+#include "core/Mat4.h"
 #include <cmath>
 #include <cstdio>
 using namespace last;
