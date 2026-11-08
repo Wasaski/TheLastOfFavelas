@@ -19,3 +19,10 @@ APK: arm64-v8a, minSdk 26, offline, sem permissões de rede.
 Engine mínima, FPS controller, colisão AABB, save versionado, renderer PS1,
 MAP_01 com sólidos, projeto Android + CI. Pendente: touch UI, inventário UI,
 diálogos completos, áudio miniaudio, texturas, APK verificado no device.
+
+## Build verificado (2026-11-08)
+- GitHub Actions run 42511531332: BUILD SUCCESSFUL (1m19s).
+- APK: build/apk/app-debug.apk (6.7 MB), arm64-v8a, minSdk 26, targetSdk 34.
+- Contém: libtlf_native.so, libSDL3.so, classes.dex, AndroidManifest.xml (aapt ok).
+- Testes locais: ./scripts/build_local.sh -> ALL TESTS PASSED.
+- Sem device ADB conectado: runtime ainda nao testado em aparelho.
