@@ -24,7 +24,7 @@ int main(int argc, char** argv){
  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
  SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 0);
  SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 0);
- SDL_GL_SetAttribute(SDL_GL_DOUBLE_BUFFER, 1);
+ SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
  SDL_Window* win = SDL_CreateWindow("THE LAST OF FAVELAS", 960, 540, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
  if(!win){ fatal("window"); return 1; }
  SDL_GLContext ctx = SDL_GL_CreateContext(win);
