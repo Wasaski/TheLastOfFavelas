@@ -14,14 +14,23 @@ static float kPos[] = { -20,0,20, 20,0,20, 20,0,-20, -20,0,-20,  -4,0,-4, 4,0,-4
 static uint8_t kCol[] = { 90,90,90, 90,90,90, 90,90,90, 90,90,90, 70,80,60, 70,80,60, 70,80,60, 70,80,60 };
 static uint16_t kIdx[] = { 0,1,2, 0,2,3, 4,5,6, 4,6,7 };
 
+static void fatal(const char* step){
+ char msg[256]; std::snprintf(msg,sizeof msg,"%s: %s",step,SDL_GetError());
+ std::fprintf(stderr,"FATAL %s\n",msg);
+ SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"THE LAST OF FAVELAS",msg,nullptr); }
 int main(int argc, char** argv){
- if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_EVENTS)!=0){ std::fprintf(stderr,"SDL init: %s\n",SDL_GetError()); return 1; }
+ if(SDL_Init(SDL_INIT_VIDEO|SDL_INIT_EVENTS)!=0){ fatal("SDL init"); return 1; }
+ SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+ SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+ SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 0);
+ SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 0);
+ SDL_GL_SetAttribute(SDL_GL_DOUBLE_BUFFER, 1);
  SDL_Window* win = SDL_CreateWindow("THE LAST OF FAVELAS", 960, 540, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
- if(!win){ std::fprintf(stderr,"window: %s\n",SDL_GetError()); return 1; }
+ if(!win){ fatal("window"); return 1; }
  SDL_GLContext ctx = SDL_GL_CreateContext(win);
- if(!ctx){ std::fprintf(stderr,"GL: %s\n",SDL_GetError()); return 1; }
+ if(!ctx){ fatal("GL"); return 1; }
  int w=960,h=540; SDL_GetWindowSize(win,&w,&h);
- PS1Renderer r; if(!r.init(w,h)){ std::fprintf(stderr,"renderer init failed\n"); return 1; }
+ PS1Renderer r; if(!r.init(w,h)){ fatal("renderer (FBO/shader)"); return 1; }
  auto solids = buildMap01Solids();
  FirstPersonController pc; pc.pos={0,1.7f,10};
  Uint64 lastT=SDL_GetTicks();
